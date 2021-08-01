@@ -1,26 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {useModal} from "./hooks";
 
 function App() {
+    let isOpen = true as boolean
+  const { toggleOpen, Modal, isOpen: isOpen2} = useModal<{isOpen: boolean}>('import', {isOpen})
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={toggleOpen}>Button</button>
+        {isOpen2 && <Modal isOpen/>}
     </div>
-  );
+  )
 }
 
 export default App;
